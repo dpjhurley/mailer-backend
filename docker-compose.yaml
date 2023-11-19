@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mailer-app:
+    build: 
+      context: ./mailer
+      dockerfile: Dockerfile
+    volumes:
+      - .:mailer-app:/app:cached
+    ports:
+      - '50001:50001'
+  api-server:
+    build: 
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - .:api-server:/app:cached
+    ports:
+      - '8080:8080'
+    environment:
+      MAILER_ENDPOINT: http://mailer-app:50001
+      PORT: 8080
