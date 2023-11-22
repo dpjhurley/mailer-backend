@@ -1,7 +1,8 @@
 import express, { json, Router } from "express";
 import config from "./config";
-import { getMailController } from "./controllers/mailController";
+import { getMailController } from "./controllers/emailController";
 import { getGprcMailClient } from "./client/gprcMailClient";
+import { sendEmailMiddleware } from "./middleware/emailMiddleware";
 
 const app = express();
 app.use(json());
@@ -17,7 +18,7 @@ const routes = {
   mail: "/mail"
 };
 
-router.post(routes.mail, mailController.sendEmail);
+router.post(routes.mail, sendEmailMiddleware, mailController.sendEmail);
 
 app.use("/api/v1", router);
 

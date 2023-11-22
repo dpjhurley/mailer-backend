@@ -6,3 +6,9 @@ docker-up:
 
 docker-down:
 	docker-compose down
+
+install-dependencies:
+	cd api && npm install && cd ../mailer && npm install
+
+generate-grpc-files:
+	cd api && npm run generate:proto-ts && cd ../mailer && npm run generate:proto-ts

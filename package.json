@@ -1,0 +1,16 @@
+{
+  "name": "mailer-backend",
+  "version": "1.0.0",
+  "description": "This project consists pf 2 small microservices in this repo, connected via an RPC (gRPC).",
+  "main": "index.js",
+  "scripts": {
+    "lint:all": "cd ./api && npm run lint && cd ../mailer && npm run lint",
+    "test:all": "cd ./api && npm test && cd ../mailer && npm test",
+    "prepare": "husky install"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^8.0.0"
+  }
+}

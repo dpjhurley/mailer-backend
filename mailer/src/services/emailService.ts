@@ -8,8 +8,9 @@ export const sendEmail = async (
   callback: grpc.sendUnaryData<SendEmailResponse>
 ): Promise<void> => {
   try {
-    const emailInput: Email__Output = {
-      from: call.request.from,
+    const emailInput: Email__Output & { from: string } = {
+      from: "admin@admin.com",
+      cc: call.request.cc,
       to: call.request.to,
       subject: call.request.subject,
       body: call.request.body

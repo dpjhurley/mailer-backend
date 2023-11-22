@@ -12,7 +12,7 @@ mockNodemailer.mockReturnValue({
 
 describe("Email", () => {
   const emailInput = {
-    from: "test@example.com",
+    cc: "test@example.com",
     to: "test@example.com",
     subject: "Test Subject",
     body: "Test Body"

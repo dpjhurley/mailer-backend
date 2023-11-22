@@ -15,7 +15,7 @@ describe("sendEmail", () => {
   it("should send an email successfully", async () => {
     const mockCall = {
       request: {
-        from: "test@example.com",
+        cc: "test@example.com",
         to: "test@example.com",
         subject: "Test",
         body: "Test body"
@@ -36,7 +36,7 @@ describe("sendEmail", () => {
   it("should catch an error if it fails to send an email", async () => {
     const mockCall = {
       request: {
-        from: "test@example.com",
+        cc: "test@example.com",
         to: "test@example.com",
         subject: "Test",
         body: "Test body"

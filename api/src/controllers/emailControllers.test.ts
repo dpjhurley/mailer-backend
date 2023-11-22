@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Email } from "../../generated/email/Email";
-import { SendMailRequest, getMailController } from "./mailController";
+import { SendMailRequest, getMailController } from "./emailController";
 
 const mockGrpcMailClient = {
   SendEmail: jest.fn()
@@ -34,7 +34,7 @@ describe("getMailController", () => {
 
       const req = mockRequest({
         to: "test@test.com",
-        from: "test@test.com",
+        cc: "test@test.com",
         subject: "test",
         body: "test"
       });
@@ -53,7 +53,7 @@ describe("getMailController", () => {
 
       const req = mockRequest({
         to: "test@test.com",
-        from: "test@test.com",
+        cc: "test@test.com",
         subject: "test",
         body: "test"
       });
@@ -76,7 +76,7 @@ describe("getMailController", () => {
 
       const req = mockRequest({
         to: "test",
-        from: "test",
+        cc: "test",
         subject: "test",
         body: "test"
       });
@@ -96,7 +96,7 @@ describe("getMailController", () => {
 
       const req = mockRequest({
         to: "test@test.com",
-        from: "test@test.com",
+        cc: "test@test.com",
         subject: "test",
         body: "test"
       });

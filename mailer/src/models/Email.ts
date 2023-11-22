@@ -6,20 +6,20 @@ import config from "../config";
 const { smtpMailtrapSandbox: smtp } = config;
 
 export interface EmailInput {
-  from: string;
+  cc: string;
   to: string;
   subject: string;
   body: string;
 }
 
 export default class Email {
-  private from: string;
+  private cc: string;
   private to: string;
   private subject: string;
   private body: string;
 
-  constructor({ from, to, subject, body }: EmailInput) {
-    this.from = from;
+  constructor({ cc, to, subject, body }: EmailInput) {
+    this.cc = cc;
     this.to = to;
     this.subject = subject;
     this.body = body;
@@ -49,7 +49,7 @@ export default class Email {
     );
 
     return {
-      from: this.from,
+      cc: this.cc,
       to: this.to,
       subject: this.subject,
       html: compiledHtml
