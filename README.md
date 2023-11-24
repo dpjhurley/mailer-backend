@@ -34,4 +34,22 @@ npm run start:mailer-server
 
 ## Docker
 
-TBC
+To run the services through docker and develop on them with hot reloads run the following command
+
+### Easiest
+
+```
+make all
+```
+
+### Still easy
+
+Build the images
+```
+make docker-build
+```
+
+Spin up the containers from built images
+```
+make docker-up
+```
