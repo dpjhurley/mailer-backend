@@ -17,7 +17,6 @@ const router = Router();
 const routes = {
   mail: "/mail"
 };
-
 router.post(routes.mail, sendEmailMiddleware, mailController.sendEmail);
 
 app.use("/api/v1", router);

@@ -12,3 +12,6 @@ install-dependencies:
 
 generate-grpc-files:
 	cd api && npm run generate:proto-ts && cd ../mailer && npm run generate:proto-ts
+
+all: 
+	make docker-build docker-up

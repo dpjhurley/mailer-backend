@@ -14,6 +14,7 @@ export interface SendMailRequest extends Request {
 export const getMailController = (grpcClient: any) => ({
   sendEmail: (req: SendMailRequest, res: Response) => {
     const emailInputs: Email = req.body;
+
     grpcClient.SendEmail(
       {
         to: emailInputs.to,

@@ -9,4 +9,4 @@ COPY . .
 EXPOSE 8080
 
 ENTRYPOINT ["npm"]
-CMD ["run", "start:api-server"]
+CMD ["run", "watch:api-server"]

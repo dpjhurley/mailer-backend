@@ -1,21 +1,30 @@
 version: '3'
 services:
-  mailer-app:
+  mailer-server:
+    container_name: mailer-server
     build: 
       context: ./mailer
       dockerfile: Dockerfile
     volumes:
-      - .:mailer-app:/app:cached
+      - ./mailer:/app
     ports:
       - '50001:50001'
+    networks:
+      - grpc-network
   api-server:
+    container_name: api-server
     build: 
       context: ./api
       dockerfile: Dockerfile
     volumes:
-      - .:api-server:/app:cached
+      - ./api:/app
     ports:
       - '8080:8080'
     environment:
-      MAILER_ENDPOINT: http://mailer-app:50001
+      MAILER_ENDPOINT: mailer-server:50001
       PORT: 8080
+    networks:
+      - grpc-network
+networks:
+  grpc-network:
+    driver: bridge

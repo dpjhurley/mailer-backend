@@ -6,7 +6,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-EXPOSE 50051
+EXPOSE 50001
 
 ENTRYPOINT ["npm"]
-CMD ["run", "start:mailer-server"]
+CMD ["run", "watch:mailer-server"]
