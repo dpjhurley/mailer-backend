@@ -8,10 +8,10 @@ docker-down:
 	docker-compose down
 
 install-dependencies:
-	cd api && npm install && cd ../mailer && npm install
+	npm install && cd apigateway && npm install && cd ../mailer && npm install
 
 generate-grpc-files:
-	cd api && npm run generate:proto-ts && cd ../mailer && npm run generate:proto-ts
+	npm run generate:proto-ts && mv -r generated apigateway/generated && cp -r apigateway/generated mailer/generated
 
 all: 
 	make docker-build docker-up

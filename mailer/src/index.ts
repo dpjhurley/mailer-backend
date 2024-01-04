@@ -5,8 +5,8 @@ import { ProtoGrpcType } from "../generated/email";
 import config from "./config";
 import { sendEmail } from "./services/emailService";
 
-const port = config.grpc.port;
-const PROTO_PATH = path.resolve(__dirname, "../protos/email.proto");
+const port = config.grpcPort;
+const PROTO_PATH = path.resolve("../protos/email.proto");
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
@@ -16,6 +16,7 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   oneofs: true
 });
 
+// The types for grpc-js are too vagues so this needs to be forced
 const protoDescriptor = grpc.loadPackageDefinition(
   packageDefinition
 ) as unknown as ProtoGrpcType;

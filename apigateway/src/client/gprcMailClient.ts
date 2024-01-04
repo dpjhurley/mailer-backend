@@ -5,8 +5,8 @@ import config from "../config";
 import { ProtoGrpcType } from "../../generated/email";
 
 export const getGprcMailClient = () => {
-  const grpcPort = config.grpc.port;
-  const PROTO_PATH = path.resolve(__dirname, "../../protos/email.proto");
+  const { grpcPort } = config;
+  const PROTO_PATH = path.resolve("../protos/email.proto");
 
   const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
     keepCase: true,
@@ -20,7 +20,8 @@ export const getGprcMailClient = () => {
     packageDefinition
   ) as unknown as ProtoGrpcType;
 
-  const mailerEndpoint = process.env.MAILER_ENDPOINT || `0.0.0.0:${grpcPort}`;
+  const mailerEndpoint =
+    `${process.env.MAILER_ENDPOINT}:${grpcPort}` || `0.0.0.0:${grpcPort}`;
 
   return new protoDescriptor.email.EmailService(
     mailerEndpoint,

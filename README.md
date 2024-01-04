@@ -10,7 +10,13 @@ I have set up the project with dummy credentials from Mailtrap.io, making use of
 
 To install run the following make commands to make sure all packages are installed and proto files generated
 ```
-make install-dependencies generate-grpc-files
+make install-dependencies
+```
+
+If the proto files need regenerating you can use the command below, but you will have to clean up the files to remove duplicates
+
+```
+make generate-grpc-files
 ```
 
 ## Locally

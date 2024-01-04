@@ -1,6 +1,6 @@
 import { sendEmail } from "./emailService";
 import { ServerUnaryCall, sendUnaryData } from "@grpc/grpc-js";
-import { Email__Output } from "../../generated/email/Email";
+import { Email as EmailInput } from "../../generated/email/Email";
 import { SendEmailResponse } from "../../generated/email/SendEmailResponse";
 
 const mockSendEmail = jest.fn();
@@ -20,7 +20,7 @@ describe("sendEmail", () => {
         subject: "Test",
         body: "Test body"
       }
-    } as unknown as ServerUnaryCall<Email__Output, SendEmailResponse>;
+    } as unknown as ServerUnaryCall<EmailInput, SendEmailResponse>;
 
     const mockCallback =
       jest.fn() as unknown as sendUnaryData<SendEmailResponse>;
@@ -41,7 +41,7 @@ describe("sendEmail", () => {
         subject: "Test",
         body: "Test body"
       }
-    } as unknown as ServerUnaryCall<Email__Output, SendEmailResponse>;
+    } as unknown as ServerUnaryCall<EmailInput, SendEmailResponse>;
 
     const mockCallback =
       jest.fn() as unknown as sendUnaryData<SendEmailResponse>;

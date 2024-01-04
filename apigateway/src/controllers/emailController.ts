@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Email } from "../../generated/email/Email";
-import { SendEmailResponse__Output } from "../../generated/email/SendEmailResponse";
+import { SendEmailResponse } from "../../generated/email/SendEmailResponse";
 import { ServiceError } from "@grpc/grpc-js";
 
 export interface MailController {
@@ -22,7 +22,7 @@ export const getMailController = (grpcClient: any) => ({
         subject: emailInputs.subject,
         body: emailInputs.body
       },
-      (err: ServiceError, response: SendEmailResponse__Output | undefined) => {
+      (err: ServiceError, response: SendEmailResponse | undefined) => {
         if (err || !response) {
           res.status(500).send("Internal Server Error");
           return;

@@ -3,7 +3,7 @@ import pug from "pug";
 import path from "path";
 import config from "../config";
 
-const { smtpMailtrapSandbox: smtp } = config;
+const { smtpHost, smtpPort, smtpPassword, smtpUser } = config;
 
 export interface EmailInput {
   cc: string;
@@ -27,12 +27,12 @@ export default class Email {
 
   private createTransporter() {
     const transport = nodemailer.createTransport({
-      host: smtp.host,
-      port: smtp.port,
+      host: smtpHost,
+      port: Number(smtpPort),
       secure: false,
       auth: {
-        user: smtp.user,
-        pass: smtp.password
+        user: smtpUser,
+        pass: smtpPassword
       }
     });
 

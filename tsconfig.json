@@ -8,6 +8,6 @@
     "allowImportingTsExtensions": true,
     "lib": ["ES2023"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["apigateway/src/**/*.ts", "mailer/src/**/*.ts"],
   "exclude": ["node_modules"]
 }

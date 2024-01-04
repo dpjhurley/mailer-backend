@@ -4,14 +4,30 @@
   "description": "This project consists pf 2 small microservices in this repo, connected via an RPC (gRPC).",
   "main": "index.js",
   "scripts": {
-    "install:all": "cd ./api && npm install && cd ../mailer && npm install",
-    "lint:all": "cd ./api && npm run lint && cd ../mailer && npm run lint",
-    "test:all": "cd ./api && npm test && cd ../mailer && npm test",
-    "prepare": "husky install"
+    "test": "jest",
+    "lint": "eslint --ext .ts **/*.ts",
+    "prepare": "husky install",
+    "generate:proto-ts": "proto-loader-gen-types --keepCase --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=generated/ protos/*.proto"
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.7.10"
+  },
   "devDependencies": {
-    "husky": "^8.0.0"
+    "@types/jest": "^29.5.10",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "husky": "^8.0.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.1.0",
+    "ts-jest": "^29.1.1"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "trailingComma": "none"
   }
 }

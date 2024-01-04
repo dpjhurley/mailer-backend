@@ -1,14 +1,14 @@
 import * as grpc from "@grpc/grpc-js";
-import { Email__Output } from "../../generated/email/Email";
+import { Email as EmailInput } from "../../generated/email/Email";
 import { SendEmailResponse } from "../../generated/email/SendEmailResponse";
 import Email from "../models/Email";
 
 export const sendEmail = async (
-  call: grpc.ServerUnaryCall<Email__Output, SendEmailResponse>,
+  call: grpc.ServerUnaryCall<EmailInput, SendEmailResponse>,
   callback: grpc.sendUnaryData<SendEmailResponse>
 ): Promise<void> => {
   try {
-    const emailInput: Email__Output & { from: string } = {
+    const emailInput: EmailInput & { from: string } = {
       from: "admin@admin.com",
       cc: call.request.cc,
       to: call.request.to,

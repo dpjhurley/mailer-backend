@@ -27,12 +27,7 @@ router.post(routes.mail, sendEmailMiddleware, mailController.sendEmail);
 
 app.use("/api/v1", router);
 
-// (async function () {
-//   const credentials = await nodemailer.createTestAccount();
-//   console.log(credentials);
-// })();
-
-const apiPort = process.env.PORT || config.api.port;
+const apiPort = config.apiPort;
 app.listen(apiPort, () => {
-  console.log(`api server is listening at http://localhost:${apiPort}`);
+  console.log(`apigateway is listening at http://localhost:${apiPort}`);
 });

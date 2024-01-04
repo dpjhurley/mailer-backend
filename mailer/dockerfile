@@ -1,10 +1,11 @@
 FROM node:18
 
-WORKDIR /app
+WORKDIR /app/mailer
 
 COPY package*.json ./
 RUN npm install
 COPY . .
+COPY ../protos ../protos
 
 EXPOSE 50001
 

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Email } from "../../generated/email/Email";
+import { Email } from "../../../mailer/generated/email/Email";
 import { SendMailRequest, getMailController } from "./emailController";
 
 const mockGrpcMailClient = {

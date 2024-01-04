@@ -1,25 +1,12 @@
-import ini from "ini";
-import fs from "node:fs";
+import "dotenv/config";
 
-interface GrpcConfig {
-  port: number;
-}
-interface SmtpConfig {
-  host: string;
-  port: number;
-  user: string;
-  password: string;
-}
-
-interface CustomConfig {
-  grpc: GrpcConfig;
-  smtp: SmtpConfig;
-  smtpMailtrapSandbox: SmtpConfig;
-}
-
-const config = ini.parse(
-  fs.readFileSync("config.ini", "utf-8")
-) as unknown as CustomConfig;
+const config = {
+  grpcPort: process.env.GRPC_PORT || "50001",
+  smtpHost: process.env.SMTP_HOST || "sandbox.smtp.mailtrap.io",
+  smtpPort: process.env.SMTP_PORT || "2525",
+  smtpUser: process.env.SMTP_USER || "",
+  smtpPassword: process.env.SMTP_PASSWORD || ""
+};
 
 if (!config) {
   throw new Error("Missing config");

@@ -1,12 +1,14 @@
 FROM node:18
 
-WORKDIR /app
+WORKDIR /app/apigateway
 
 COPY package*.json ./
 RUN npm install
 COPY . .
+COPY ../protos ../protos
+
 
 EXPOSE 8080
 
 ENTRYPOINT ["npm"]
-CMD ["run", "watch:api-server"]
+CMD ["run", "watch:apigateway"]

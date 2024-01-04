@@ -3,25 +3,27 @@ services:
   mailer-server:
     container_name: mailer-server
     build: 
-      context: ./mailer
-      dockerfile: Dockerfile
+      context: ./
+      dockerfile: mailer/Dockerfile
     volumes:
-      - ./mailer:/app
+      - ./mailer:/app/mailer
+      - ./protos:/app/protos
     ports:
       - '50001:50001'
     networks:
       - grpc-network
-  api-server:
-    container_name: api-server
+  apigateway:
+    container_name: apigateway
     build: 
-      context: ./api
-      dockerfile: Dockerfile
+      context: ./
+      dockerfile: apigateway/Dockerfile
     volumes:
-      - ./api:/app
+      - ./apigateway:/app/apigateway
+      - ./protos:/app/protos
     ports:
       - '8080:8080'
     environment:
-      MAILER_ENDPOINT: mailer-server:50001
+      MAILER_ENDPOINT: mailer-server
       PORT: 8080
     networks:
       - grpc-network
