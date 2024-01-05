@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Node.js
-        uses: actions/setup-node@v1
-      - name: Install make
-        run: sudo apt-get install -y make
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
       - name: Install dependencies
-        run: make install-dependencies
-      - name: Run lint and tests
-        run: make lint-and-test
+        run: sudo apt-get install -y make && make install-dependencies
+      - name: Run test and lint
+        run: make test-and-lint

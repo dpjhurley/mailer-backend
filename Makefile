@@ -10,7 +10,7 @@ docker-down:
 install-dependencies:
 	npm install && cd apigateway && npm install && cd ../mailer && npm install
 
-lint-and-test:
+test-and-lint:
 	npm run lint && npm run test
 
 generate-grpc-files:
