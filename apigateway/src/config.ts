@@ -2,8 +2,7 @@ import "dotenv/config";
 
 const config = {
   grpcPort: process.env.GRPC_PORT || "50001",
-  apiPort: process.env.API_PORT || "8080",
-
+  apiPort: process.env.API_PORT || "8080"
 };
 
 if (!config) {
